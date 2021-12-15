@@ -1,6 +1,6 @@
 #!/bin/bash
 if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root" 
+   echo "This script must be run as root"
    exit 1
 fi
 
@@ -10,13 +10,14 @@ apt-get update
 apt-get install qemu-system gcc -y
 apt-get build-dep qemu-system -y
 
-wget https://download.qemu.org/qemu-4.2.0.tar.xz
+wget https://download.qemu.org/qemu-5.1.0.tar.xz
 
-tar xf qemu-4.2.0.tar.xz
-cd qemu-4.2.0
+tar xf qemu-5.1.0.tar.xz
+cd qemu-5.1.0
 
-./configure --target-list=x86_64-softmmu --disable-werror --disable-capstone --enable-sanitizers
-make  
+./configure --target-list=x86_64-softmmu --disable-werror --disable-capstone --disable-sanitizers
+# ./configure --target-list=x86_64-softmmu --disable-werror --disable-capstone --enable-sanitizers
+make
 
 cd -
 
@@ -27,4 +28,4 @@ cp grub.cfg /etc/default/grub
 
 update-grub
 
-shutdown -h now 
+shutdown -h now

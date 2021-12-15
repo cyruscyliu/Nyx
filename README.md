@@ -1,5 +1,8 @@
 # Nyx: Greybox Hypervisor Fuzzing using Fast Snapshots and Affine Types
 
+## Change Log
++ Update QEMU 4.2.50 to QEMU 5.1.0
+
 <a href="https://www.usenix.org/system/files/sec21-schumilo.pdf"> <img align="right" width="200"  src="paper.png"> </a>
 
 Nyx is fast full-VM snapshot fuzzer for type-2 hypervisors. It's built upon [kAFL](https://github.com/RUB-SysSec/kAFL), [Redqueen](https://github.com/RUB-SysSec/redqueen) and [Hyper-Cube](https://github.com/RUB-SysSec/hypercube). The fuzzer is based on our [paper](https://www.usenix.org/system/files/sec21-schumilo.pdf) ([slides](https://www.usenix.org/system/files/sec21_slides_schumilo.pdf), [recording](https://www.usenix.org/conference/usenixsecurity21/presentation/schumilo)): 
