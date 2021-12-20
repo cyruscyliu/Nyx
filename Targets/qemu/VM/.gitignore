@@ -7,3 +7,4 @@ pre_snapshot/fs_drv_qemu.qcow2.khash
 pre_snapshot/INFO.txt
 pre_snapshot/fast_snapshot.qemu_state
 pre_snapshot/fs_cache.meta
+pre_snapshot-*

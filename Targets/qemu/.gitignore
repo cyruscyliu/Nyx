@@ -29,3 +29,6 @@ sharedir_asan/hypertrash.iso
 sharedir_asan/spec.msgp
 
 config.ron
+sharedir-*
+sharedir_asan-*
+config.ron-*

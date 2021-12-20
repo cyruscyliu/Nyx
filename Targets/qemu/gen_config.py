@@ -10,7 +10,7 @@ for target in targets:
         config = """(
     runner: QemuSnapshot((
         qemu_binary: "/home/qiliu/Nyx/QEMU-PT/qemu/x86_64-softmmu/qemu-system-x86_64",
-        hda: "/home/qiliu/Nyx-images/qemu.qcow2-{0}-{1}",
+        hda: "/home/qiliu/Nyx-images/{0}-{1}/qemu.qcow2",
         sharedir: "/home/qiliu/Nyx/Targets/qemu/sharedir-{0}-{1}/",
         presnapshot: "/home/qiliu/Nyx/Targets/qemu/VM/pre_snapshot-{0}-{1}/",
 	snapshot_path: DefaultPath,
