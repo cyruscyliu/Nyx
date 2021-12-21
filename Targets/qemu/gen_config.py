@@ -11,14 +11,14 @@ for target in targets:
     runner: QemuSnapshot((
         qemu_binary: "/home/qiliu/Nyx/QEMU-PT/qemu/x86_64-softmmu/qemu-system-x86_64",
         hda: "/home/qiliu/Nyx-images/{0}-{1}/qemu.qcow2",
-        sharedir: "/home/qiliu/Nyx/Targets/qemu/sharedir-{0}-{1}/",
+        sharedir: "/home/qiliu/Nyx/Targets/qemu/sharedir_asan-{0}-{1}/",
         presnapshot: "/home/qiliu/Nyx/Targets/qemu/VM/pre_snapshot-{0}-{1}/",
 	snapshot_path: DefaultPath,
 	// snapshot_path: Reuse("/snapshot"),
         debug: false,
     )),
     fuzz: (
-        spec_path: "/home/qiliu/Nyx/Targets/qemu/sharedir-{0}-{1}/spec.msgp",
+        spec_path: "/home/qiliu/Nyx/Targets/qemu/sharedir_asan-{0}-{1}/spec.msgp",
         workdir_path: "/media/hdd0/qiliu/workdir_qemu-{0}-{1}/",
         bitmap_size: 65536,
         mem_limit: 1024,
