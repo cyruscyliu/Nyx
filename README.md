@@ -1,7 +1,35 @@
 # Nyx: Greybox Hypervisor Fuzzing using Fast Snapshots and Affine Types
 
 ## Change Log
-+ Update QEMU 4.2.50 to QEMU 5.1.0
+- [Done] Update QEMU version to QEMU 5.1.0
+- [Done] Update workdir for each instance
+- [Done] Generate spec for each instance (nyx_fuzzer/hypertrash_spec/)
+- [Done] Construct run.sh for each target (Targets/qemu/agent)
+- [Done] Update gen_config.py
+```
+    runner: QemuSnapshot((
+        qemu_binary: "/home/qiliu/Nyx/QEMU-PT/qemu/x86_64-softmmu/qemu-system-x86_64",
+        hda: "/home/qiliu/Nyx-images/qemu.qcow2-legacy_xhci-0",
+        sharedir: "/home/qiliu/Nyx/Targets/qemu/sharedir_asan-legacy_xhci-0/",
+        presnapshot: "/home/qiliu/Nyx/Targets/qemu/VM/pre_snapshot-legacy_xhci-0/",
+        spec_path: "/home/qiliu/Nyx/Targets/qemu/sharedir_asan-legacy_xhci-0/spec.msgp-legacy_xhci",
+        workdir_path: "/media/hdd0/qiliu/workdir_qemu-legacy_xhci-0/",
+```
+## Work Flow Overview
+- [Done] Install dependencies
+- [Done] KVM-PT
+- [Done] QEMU-PT (HDD)
+- [Done] Build GRUB (HDD)
+- Following steps:
+    - [Done] 1-3: prepare a generic VM image, then cp it for each instance (HDD)
+    - [Done] 4: take a snapshot, then cp it for each instance (hdd/to/qemu.qcow2)
+    - [Done] 5: generate all config files: `python3 gen_config.py` (HDD)
+    - [Done] 6: generate all spec files: `bash -x gen_all.sh` (HDD)
+    - [Done] 7: copy all launching commands: `bash -x gen_all.sh` (HDD)
+    - [Done] 8: save the testcases with timestamp and launch the fuzzer
+    - [Done] 9: check results
+
+---
 
 <a href="https://www.usenix.org/system/files/sec21-schumilo.pdf"> <img align="right" width="200"  src="paper.png"> </a>
 
