@@ -311,8 +311,8 @@ LD_BIND_NOW=1 LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libasan.so.4:./hypertrash_cra
 def make_legacy_soundblaster(s):
   make_globals(s)
   make_hypercube(s, 0x224, 0x4, 0, mmio=False)
-  make_hypercube(s, 0x22a, 0x1, 0, mmio=False)
-  make_hypercube(s, 0x22c, 0x4, 0, mmio=False)
+  make_hypercube(s, 0x22a, 0x1, 1, mmio=False)
+  make_hypercube(s, 0x22c, 0x4, 2, mmio=False)
 
 """
 LD_BIND_NOW=1 LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libasan.so.4:./hypertrash_crash_detector_asan ASAN_OPTIONS=log_path=/tmp/data.log:abort_on_error=true:detect_leaks=false 
