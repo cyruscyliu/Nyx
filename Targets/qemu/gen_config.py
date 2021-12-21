@@ -12,7 +12,7 @@ for target in targets:
         qemu_binary: "/media/hdd0/qiliu/Nyx/QEMU-PT/qemu/x86_64-softmmu/qemu-system-x86_64",
         hda: "/media/hdd0/qiliu/Nyx-images/{0}-{1}/qemu.qcow2",
         sharedir: "/media/hdd0/qiliu/Nyx/Targets/qemu/sharedir_asan-{0}-{1}/",
-        presnapshot: "/media/hdd0/qiliu/Nyx/Targets/qemu/VM/pre_snapshot-{0}-{1}/",
+        presnapshot: "/media/hdd0/qiliu/Nyx-images/pre_snapshot-{0}-{1}/",
 	snapshot_path: DefaultPath,
 	// snapshot_path: Reuse("/snapshot"),
         debug: false,

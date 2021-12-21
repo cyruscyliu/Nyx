@@ -16,16 +16,17 @@
         workdir_path: "/media/hdd0/qiliu/workdir_qemu-legacy_xhci-0/",
 ```
 ## Work Flow Overview
-- [Done] Install dependencies
-- [Done] KVM-PT
-- [Done] QEMU-PT (HDD)
-- [Done] Build GRUB (HDD)
+- [Done] Install dependencies (01-deploy.sh)
+- [Done] KVM-PT (02-deploy.sh, 03-deploy.sh)
+- [Done] QEMU-PT (HDD) (04-deploy.sh)
+- [Done] Build GRUB (HDD) (05-deploy.sh)
+- [Done] Build Nyx-Fuzzer (HDD) (06-deploy.sh)
 - Following steps:
-    - [Done] 1-3: prepare a generic VM image, then cp it for each instance (HDD)
-    - [Done] 4: take a snapshot, then cp it for each instance (hdd/to/qemu.qcow2)
-    - [Done] 5: generate all config files: `python3 gen_config.py` (HDD)
-    - [Done] 6: generate all spec files: `bash -x gen_all.sh` (HDD)
-    - [Done] 7: copy all launching commands: `bash -x gen_all.sh` (HDD)
+    - [Done] 1-3: prepare a generic VM image, then cp it for each instance (HDD) (07-deploy.sh)
+    - [Done] 4: take a snapshot, then cp it for each instance (hdd/to/qemu.qcow2) (08-deploy.sh)
+    - [Done] 5: generate all config files: `python3 gen_config.py` (HDD) (09-deploy.sh)
+    - [Done] 6: generate all spec files: `bash -x gen_all.sh` (HDD) (09-deploy.sh)
+    - [Done] 7: copy all launching commands: `bash -x gen_all.sh` (HDD) (09-deploy.sh)
     - [Done] 8: save the testcases with timestamp and launch the fuzzer
     - [Done] 9: check results
 
