@@ -20,6 +20,7 @@ use crate::config::{ForkServerConfig, FuzzerConfig};
 use std::collections::{HashMap,HashSet};
 use std::error::Error;
 use std::rc::Rc;
+use chrono::prelude::*;
 
 pub struct StructuredForkServer {
     srv: ForkServer,
@@ -175,28 +176,30 @@ impl<Fuzz: FuzzRunner + GetStructStorage> StructFuzzer<Fuzz> {
             //println!(
             //    "writing to {}",
             //    &format!(
-            //        "{}/corpus/{}/cnt_{}.py",
+            //        "{}/corpus/{}/cnt_{}_{}.py",
             //        self.config.workdir_path,
             //        input.exit_reason.name(),
-            //        self.others
+            //        self.others, timestamps
             //    )
             //);
             let id = self.queue.next_id();
+            let now = Utc::now();
+            let ts: i64 = now.timestamp();
             input.data.write_to_file(
                 &format!(
-                    "{}/corpus/{}/cnt_{}.bin",
+                    "{}/corpus/{}/cnt_{}_{}.bin",
                     self.config.workdir_path,
                     input.exit_reason.name(),
-                    id
+                    id, ts
                 ),
                 &self.mutator.spec,
             );
             input.data.write_to_script_file(
                 &format!(
-                    "{}/corpus/{}/cnt_{}.py",
+                    "{}/corpus/{}/cnt_{}_{}.py",
                     self.config.workdir_path,
                     input.exit_reason.name(),
-                    id
+                    id, ts
                 ),
                 &self.mutator.spec,
             );
@@ -204,10 +207,10 @@ impl<Fuzz: FuzzRunner + GetStructStorage> StructFuzzer<Fuzz> {
                 ExitReason::Crash(desc) => {
                     std::fs::write(
                         &format!(
-                            "{}/corpus//{}/{}.log",
+                            "{}/corpus//{}/{}_{}.log",
                             self.config.workdir_path,
                             input.exit_reason.name(),
-                            id,
+                            id, ts
                         ),
                         desc,
                     )
@@ -216,10 +219,10 @@ impl<Fuzz: FuzzRunner + GetStructStorage> StructFuzzer<Fuzz> {
                 ExitReason::InvalidWriteToPayload(desc) => {
                     std::fs::write(
                         &format!(
-                            "{}/corpus//{}/{}.log",
+                            "{}/corpus//{}/{}_{}.log",
                             self.config.workdir_path,
                             input.exit_reason.name(),
-                            id
+                            id, ts
                         ),
                         desc,
                     )
