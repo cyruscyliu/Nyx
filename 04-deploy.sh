@@ -8,4 +8,4 @@ sudo apt-get install -y librbd-dev librdmacm-dev
 sudo apt-get install -y libsasl2-dev libsdl1.2-dev libseccomp-dev libsnappy-dev libssh2-1-dev
 sudo apt-get install -y libvde-dev libvdeplug-dev libvte-2.90-dev libxen-dev liblzo2-dev
 sudo apt-get install -y valgrind xfslibs-dev
-cd QEMU-PT && rm -r qemu && sh compile_qemu_pt.sh
+cd QEMU-PT && rm -rf qemu && sh compile_qemu_pt.sh

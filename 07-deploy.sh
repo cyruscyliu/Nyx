@@ -2,6 +2,11 @@
 # prepare a Ubuntu image and move it to Nyx-images
 target=$1
 
+if [[ ! -f ../Nyx-images/qemu.qcow2 ]]; then
+    echo "Please prepare a Ubuntu image in ../Nyx-images"
+    exit
+fi
+
 cd ../Nyx-images
 for idx in {0..9}; do
     mkdir ${target}-${idx}
