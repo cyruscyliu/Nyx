@@ -27,9 +27,9 @@ for target in targets:
             nanos: 800000000,
         ),
         target_binary: None,
-        threads: 4,
+        threads: 1,
         thread_id: 0,
-        cpu_pin_start_at: 0,
+        cpu_pin_start_at: {1},
     ),
 )
 """.format(target, idx)

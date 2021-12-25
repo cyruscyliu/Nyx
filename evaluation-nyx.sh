@@ -4,6 +4,8 @@
 # legacy_sdhci legacy_ee100pro legacy_e1000 legacy_ne2000 legacy_pcnet
 # legacy_rtl8139 legacy_xhci
 target=$1
-for idx in {0..0}; do
-    cd nyx_fuzzer/rust_fuzzer && bash -x launch.sh ${target} ${idx}
+cd nyx_fuzzer/rust_fuzzer
+for idx in {0..9}; do
+    bash -x launch.sh ${target} ${idx} &
+    sleep 20
 done
