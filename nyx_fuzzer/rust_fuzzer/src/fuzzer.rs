@@ -279,24 +279,26 @@ impl<Fuzz: FuzzRunner + GetStructStorage> StructFuzzer<Fuzz> {
                 } else {
                     unreachable!();
                 }
+                let now = Utc::now();
+                let ts: i64 = now.timestamp();
                 if let Some(id) = id {
                     let inp = self.queue.get_input(id);
                     let data = &inp.read().unwrap().data;
                     self.get_trace(&data);
                     data.write_to_file(
                         &format!(
-                            "{}/corpus/normal/cov_{}.bin",
+                            "{}/corpus/normal/cov_{}_{}.bin",
                             self.config.workdir_path,
-                            id.as_usize(),
+                            id.as_usize(), ts
                         ),
                         &self.mutator.spec,
                     );
 
                     data.write_to_script_file(
                         &format!(
-                            "{}/corpus/normal/cov_{}.py",
+                            "{}/corpus/normal/cov_{}_{}.py",
                             self.config.workdir_path,
-                            id.as_usize(),
+                            id.as_usize(), ts
                         ),
                         &self.mutator.spec,
                     );
@@ -307,9 +309,9 @@ impl<Fuzz: FuzzRunner + GetStructStorage> StructFuzzer<Fuzz> {
                             self.config.thread_id
                         ),
                         &format!(
-                            "{}/corpus/normal/cov_{}.trace",
+                            "{}/corpus/normal/cov_{}_{}.trace",
                             self.config.workdir_path,
-                            id.as_usize(),
+                            id.as_usize(), ts
                         ),
                     )
                     .unwrap();
@@ -324,9 +326,9 @@ impl<Fuzz: FuzzRunner + GetStructStorage> StructFuzzer<Fuzz> {
                             self.config.thread_id
                         ),
                         &format!(
-                            "{}/corpus/normal/cov_{}.rq",
+                            "{}/corpus/normal/cov_{}_{}.rq",
                             self.config.workdir_path,
-                            id.as_usize(),
+                            id.as_usize(), ts
                         ),
                     )
                     .unwrap();

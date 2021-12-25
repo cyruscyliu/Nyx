@@ -7,5 +7,5 @@ target=$1
 cd nyx_fuzzer/rust_fuzzer
 for idx in {0..9}; do
     bash -x launch.sh ${target} ${idx} &
-    sleep 20
+    sleep 60
 done
