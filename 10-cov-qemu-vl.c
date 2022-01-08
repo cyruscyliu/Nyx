@@ -2831,12 +2831,12 @@ static void create_default_memdev(MachineState *ms, const char *path)
 }
 
 // collect coverage when crashes
-int __llvm_profile_runtime;
 void __llvm_profile_initialize_file(void);
 int __llvm_profile_write_file(void);
 
 static void nyx_sig_handler(int signum) {
     printf("Bingo! We dump the coverage\n");
+    __llvm_profile_initialize_file();
     __llvm_profile_write_file();
     exit(0);
 }
@@ -4428,7 +4428,6 @@ void qemu_init(int argc, char **argv, char **envp)
     os_setup_signal_handling();
 
     // collect coverage when crashes
-    __llvm_profile_initialize_file();
     signal(SIGABRT, nyx_sig_handler);
     signal(SIGSEGV, nyx_sig_handler);
     signal(SIGALRM, nyx_sig_handler);
