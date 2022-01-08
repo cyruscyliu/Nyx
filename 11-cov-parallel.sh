@@ -31,11 +31,13 @@ elif [ $target = "legacy_ee100pro" ]; then
 elif [ $target = "legacy_es1370" ]; then
     $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -device ES1370
 elif [ $target = "legacy_floppy" ]; then
-    dd if=/dev/zero of=floppy.img bs=1024 count=1440
-    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -fda floppy.img
+    dd if=/dev/zero of=floppy.img-${target}-${round}-${timestamp} bs=1024 count=1440
+    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -fda floppy.img-${target}-${round}-${timestamp}
+    rm floppy.img-${target}-${round}-${timestamp}
 elif [ $target = "legacy_ide_core" ]; then
-    qemu-img create hdd.img 10M
-    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -hda hdd.img
+    qemu-img create hdd.img-${target}-${round}-${timestamp} 10M
+    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -hda hdd.img-${target}-${round}-${timestamp}
+    rm hdd.img-${target}-${round}-${timestamp}
 elif [ $target = "legacy_intel_hda" ]; then
     $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -device intel-hda -device hda-duplex
 elif [ $target = "legacy_ne2000" ]; then
@@ -49,8 +51,9 @@ elif [ $target = "legacy_rtl8139" ]; then
 elif [ $target = "legacy_sb16" ]; then
     $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -device sb16
 elif [ $target = "legacy_sdhci" ]; then
-    qemu-img create sd-card.img 10M
-    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -device sdhci-pci -drive format=raw,file=sd-card.img,if=none,id=disk,cache=writeback,discard=unmap -device sd-card,drive=disk
+    qemu-img create sd-card.img-${target}-${round}-${timestamp} 10M
+    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -device sdhci-pci -drive format=raw,file=sd-card.img-${target}-${round}-${timestamp},if=none,id=disk,cache=writeback,discard=unmap -device sd-card,drive=disk
+    rm sd-card.img-${target}-${round}-${timestamp}
 elif [ $target = "legacy_serial" ]; then
     $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -serial file:/tmp/A
 elif [ $target = "legacy_xhci" ]; then
