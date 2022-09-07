@@ -1,5 +1,4 @@
 #!/bin/bash
-QEMU=./qemu-5.1.0/x86_64-softmmu/qemu-system-x86_64
 target=$1
 
 # usage: bash -x ./11-cov.sh /qiliu/workdir_qemu-legacy_intel_hda-

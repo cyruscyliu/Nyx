@@ -18,7 +18,7 @@ ISO=${hypervisor_spec}/build/hypertrash_os/iso/hypertrash_os_bios_crash.iso
 
 RESULTS_DIR=/qiliu/nyx-${target}-profiles
 mkdir ${RESULTS_DIR}
-export LLVM_PROFILE_FILE=$RESULTS_DIR/profile-nyx-${target}-${round}-${timestamp}
+export LLVM_PROFILE_FILE=$RESULTS_DIR/profile-nyx-qemu-${target}-none-${round}-${timestamp}
 
 if [ $target = "legacy_ac97" ]; then
     $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -device AC97
