@@ -23,17 +23,10 @@ echo 0 > /proc/sys/kernel/randomize_va_space
 
 echo 0 > /proc/sys/kernel/printk
 
-brctl addbr br0
-ip addr flush dev eth0
-brctl addif br0 eth0
-tunctl -t tap0 -u `whoami`
-brctl addif br0 tap0
-ifconfig eth0 up
-ifconfig tap0 up
-ifconfig br0 up
 
 clear
 
-dd if=/dev/zero of=floppy.img bs=1024 count=1440
 LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libasan.so.4:./hypertrash_crash_detector ASAN_OPTIONS=abort_on_error=true:detect_leaks=false \
-    /home/user/qemu-5.1.0/x86_64-softmmu/qemu-system-x86_64 -cdrom hypertrash.iso -enable-kvm -m 100 -net none -nographic -fda floppy.img
+    /home/user/qemu-nyx/out-cov/qemu-system-x86_64 -cdrom hypertrash.iso -enable-kvm -net none -nographic -machine q35 \
+    -drive id=disk0,file=null-co://,file.read-zeroes=on,if=none,format=raw -device floppy,unit=0,drive=disk0 \
+    2> /tmp/data.log

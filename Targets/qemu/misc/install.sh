@@ -10,15 +10,16 @@ apt-get update
 apt-get install qemu-system gcc -y
 apt-get build-dep qemu-system -y
 
-wget https://download.qemu.org/qemu-5.1.0.tar.xz
+rm -rf qemu-nyx
+tar xf qemu-nyx.tar.gz
+mkdir -p qemu-nyx/out-cov
+cd qemu-nyx/out-cov
 
-tar xf qemu-5.1.0.tar.xz
-cd qemu-5.1.0
-
-./configure --target-list=x86_64-softmmu --disable-werror --disable-capstone --disable-sanitizers
-# ./configure --target-list=x86_64-softmmu --disable-werror --disable-capstone --enable-sanitizers
-make
-
+../configure --disable-werror --disable-sanitizers \
+    --target-list="x86_64-softmmu"
+make CFLAGS="-DVIDEZZO_LESS_CRASHES" \
+    -j$(nproc) x86_64-softmmu/all
+    cp x86_64-softmmu/qemu-system-x86_64 .
 cd -
 
 modprobe kvm
@@ -28,4 +29,4 @@ cp grub.cfg /etc/default/grub
 
 update-grub
 
-shutdown -h now
+# shutdown -h now

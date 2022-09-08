@@ -23,17 +23,10 @@ echo 0 > /proc/sys/kernel/randomize_va_space
 
 echo 0 > /proc/sys/kernel/printk
 
-brctl addbr br0
-ip addr flush dev eth0
-brctl addif br0 eth0
-tunctl -t tap0 -u `whoami`
-brctl addif br0 tap0
-ifconfig eth0 up
-ifconfig tap0 up
-ifconfig br0 up
 
 clear
 
-qemu-img create sd-card.img 10M
 LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libasan.so.4:./hypertrash_crash_detector ASAN_OPTIONS=abort_on_error=true:detect_leaks=false \
-    /home/user/qemu-5.1.0/x86_64-softmmu/qemu-system-x86_64 -cdrom hypertrash.iso -enable-kvm -m 100 -net none -nographic -device sdhci-pci -drive format=raw,file=sd-card.img,if=none,id=disk,cache=writeback,discard=unmap -device sd-card,drive=disk 2> /dev/nul
+    /home/user/qemu-nyx/out-cov/qemu-system-x86_64 -cdrom hypertrash.iso -enable-kvm -net none -nographic -machine q35 \
+    -device sdhci-pci,sd-spec-version=3 -device sd-card,drive=mydrive -drive if=none,index=0,file=null-co://,format=raw,id=mydrive \
+    2> /tmp/data.log

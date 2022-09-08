@@ -8,8 +8,10 @@ src_files = [os.path.join(src_dir, src_file) for src_file in sorted(os.listdir(s
 cmd = 'llvm-profdata merge -output={} {}'
 
 for index, src_file in enumerate(src_files):
-    dst_files = src_files[0: index]
-    dst_files.append(src_file)
+    if index == 0:
+        previous = ''
+    else:
+        previous = os.path.join(dst_dir, os.path.basename(src_files[index - 1]))
     dst_file = os.path.join(dst_dir, os.path.basename(src_file))
-    print(cmd.format(dst_file, ' '.join(dst_files)))
+    print(cmd.format(dst_file, ' '.join([previous, src_file])))
 

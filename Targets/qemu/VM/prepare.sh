@@ -7,5 +7,5 @@ sudo modprobe kvm-intel
 
 sudo chmod 777 /dev/kvm
 
-qemu-system-x86_64 --enable-kvm -m 1024 -cdrom ubuntu-18.04.4-live-server-amd64.iso -k de -hda qemu.qcow2  -nic user,hostfwd=tcp::2223-:22 -vnc :0
+sudo qemu-system-x86_64 --enable-kvm -m 1024 -cdrom ubuntu-18.04.4-live-server-amd64.iso -hda qemu.qcow2  -nic user,hostfwd=tcp::2223-:22 -vnc :0
 

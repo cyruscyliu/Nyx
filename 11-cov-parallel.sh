@@ -1,5 +1,5 @@
 #!/bin/bash
-QEMU=./qemu-5.1.0/x86_64-softmmu/qemu-system-x86_64
+QEMU=$PWD/Targets/qemu/VM/qemu-nyx/out-cov/qemu-system-x86_64
 
 bin=$1
 # bin=/qiliu/workdir_qemu-legacy_ne2000-1/corpus/timeout/cnt_617_1640728834.bin  # with target round timestamp
@@ -16,7 +16,7 @@ pushd build/hypertrash_os && cp $bin misc/crash.hexa && make hypertrash_os_crash
 popd
 ISO=${hypervisor_spec}/build/hypertrash_os/iso/hypertrash_os_bios_crash.iso
 
-RESULTS_DIR=/qiliu/nyx-${target}-profiles
+RESULTS_DIR=nyx-qemu-${target}-none-profiles
 mkdir ${RESULTS_DIR}
 export LLVM_PROFILE_FILE=$RESULTS_DIR/profile-nyx-qemu-${target}-none-${round}-${timestamp}
 

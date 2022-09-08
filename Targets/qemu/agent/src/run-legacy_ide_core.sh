@@ -23,18 +23,10 @@ echo 0 > /proc/sys/kernel/randomize_va_space
 
 echo 0 > /proc/sys/kernel/printk
 
-brctl addbr br0
-ip addr flush dev eth0
-brctl addif br0 eth0
-tunctl -t tap0 -u `whoami`
-brctl addif br0 tap0
-ifconfig eth0 up
-ifconfig tap0 up
-ifconfig br0 up
 
 clear
 
 qemu-img create hdd.img 10M
 LD_PRELOAD=./hypertrash_crash_detector \
-    /home/user/qemu-5.1.0/x86_64-softmmu/qemu-system-x86_64 -cdrom hypertrash.iso -enable-kvm -m 100 -net none -hda hdd.img
+    /home/user/qemu-nyx/out-cov/qemu-system-x86_64 -cdrom hypertrash.iso -enable-kvm -m 100 -net none -hda hdd.img
 
