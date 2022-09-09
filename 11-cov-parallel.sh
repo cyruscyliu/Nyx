@@ -21,45 +21,53 @@ mkdir ${RESULTS_DIR}
 export LLVM_PROFILE_FILE=$RESULTS_DIR/profile-nyx-qemu-${target}-none-${round}-${timestamp}
 
 if [ $target = "legacy_ac97" ]; then
-    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -device AC97
+    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -machine q35 \
+    -device ac97,audiodev=snd0 -audiodev none,id=snd0
 elif [ $target = "legacy_cs4231a" ]; then
-    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -device cs4231a
+    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -machine q35 \
+    -device cs4231a,audiodev=snd0 -audiodev none,id=snd0
 elif [ $target = "legacy_e1000" ]; then
-    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -device e1000,netdev=net0 -netdev tap,id=net0,ifname=tap0,script=no,downscript=no
+    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -machine q35 \
+    -device e1000,netdev=net0 -netdev user,id=net0
 elif [ $target = "legacy_ee100pro" ]; then
-    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -device i82550,netdev=net0 -netdev tap,id=net0,ifname=tap0,script=no,downscript=no
+    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -machine q35 \
+    -device i82550,netdev=net0 -netdev user,id=net0
 elif [ $target = "legacy_es1370" ]; then
-    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -device ES1370
+    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -machine q35 \
+    -device es1370,audiodev=snd0 -audiodev none,id=snd0
 elif [ $target = "legacy_floppy" ]; then
-    dd if=/dev/zero of=floppy.img-${target}-${round}-${timestamp} bs=1024 count=1440
-    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -fda floppy.img-${target}-${round}-${timestamp}
-    rm floppy.img-${target}-${round}-${timestamp}
-elif [ $target = "legacy_ide_core" ]; then
-    qemu-img create hdd.img-${target}-${round}-${timestamp} 10M
-    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -hda hdd.img-${target}-${round}-${timestamp}
-    rm hdd.img-${target}-${round}-${timestamp}
+    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -machine pc \
+    -drive id=disk0,file=null-co://,file.read-zeroes=on,if=none,format=raw -device floppy,unit=0,drive=disk0
 elif [ $target = "legacy_intel_hda" ]; then
-    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -device intel-hda -device hda-duplex
+    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -machine q35 \
+    -device intel-hda,id=hda0 -device hda-output,bus=hda0.0 -device hda-micro,bus=hda0.0 -device hda-duplex,bus=hda0.0
 elif [ $target = "legacy_ne2000" ]; then
-    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -device ne2k_pci,netdev=net0 -netdev tap,id=net0,ifname=tap0,script=no,downscript=no
-elif [ $target = "legacy_parallel" ]; then
-    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -parallel file:/tmp/A
+    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -machine q35 \
+    -device ne2k_pci,netdev=net0 -netdev user,id=net0
 elif [ $target = "legacy_pcnet" ]; then
-    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -device pcnet,netdev=net0 -netdev tap,id=net0,ifname=tap0,script=no,downscript=no
+    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -machine q35 \
+    -device pcnet,netdev=net0 -netdev user,id=net0
 elif [ $target = "legacy_rtl8139" ]; then
-    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -device rtl8139,netdev=net0 -netdev tap,id=net0,ifname=tap0,script=no,downscript=no
+    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -machine q35 \
+    -device rtl8139,netdev=net0 -netdev user,id=net0
 elif [ $target = "legacy_sb16" ]; then
-    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -device sb16
+    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -machine q35 \
+    -device sb16,audiodev=snd0 -audiodev none,id=snd0
 elif [ $target = "legacy_sdhci" ]; then
-    qemu-img create sd-card.img-${target}-${round}-${timestamp} 10M
-    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -device sdhci-pci -drive format=raw,file=sd-card.img-${target}-${round}-${timestamp},if=none,id=disk,cache=writeback,discard=unmap -device sd-card,drive=disk
-    rm sd-card.img-${target}-${round}-${timestamp}
-elif [ $target = "legacy_serial" ]; then
-    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -serial file:/tmp/A
+    $QEMU -cdrom $ISO -enable-kvm -m 100 -net none -nographic -machine q35 \
+    -device sdhci-pci,sd-spec-version=3 -device sd-card,drive=mydrive -drive if=none,index=0,file=null-co://,format=raw,id=mydrive
 elif [ $target = "legacy_xhci" ]; then
-    $QEMU -cdrom $ISO -enable-kvm -net none -nographic -device nec-usb-xhci
+    $QEMU -cdrom $ISO -enable-kvm -net none -nographic -machine q35 \
+    -drive file=null-co://,if=none,format=raw,id=disk0 -device qemu-xhci,id=xhci -device usb-tablet,bus=xhci.0 \
+    -device usb-bot -device usb-storage,drive=disk0 -chardev null,id=cd0 -chardev null,id=cd1 \
+    -device usb-braille,chardev=cd0 -device usb-ccid -device usb-ccid -device usb-kbd -device usb-mouse -device usb-serial,chardev=cd1 \
+    -device usb-tablet -device usb-wacom-tablet -device usb-audio
 elif [ $target = "qemu_xhci" ]; then
-    $QEMU -cdrom $ISO -enable-kvm -net none -nographic -device nec-usb-xhci
+    $QEMU -cdrom $ISO -enable-kvm -net none -nographic -machine q35 \
+    -drive file=null-co://,if=none,format=raw,id=disk0 -device qemu-xhci,id=xhci -device usb-tablet,bus=xhci.0 \
+    -device usb-bot -device usb-storage,drive=disk0 -chardev null,id=cd0 -chardev null,id=cd1 \
+    -device usb-braille,chardev=cd0 -device usb-ccid -device usb-ccid -device usb-kbd -device usb-mouse -device usb-serial,chardev=cd1 \
+    -device usb-tablet -device usb-wacom-tablet -device usb-audio
 fi
 
 # clean

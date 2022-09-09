@@ -27,6 +27,6 @@ echo 0 > /proc/sys/kernel/printk
 clear
 
 LD_PRELOAD=./hypertrash_crash_detector \
-    /home/user/qemu-nyx/out-cov/qemu-system-x86_64 -cdrom hypertrash.iso -enable-kvm -net none -nographic -machine q35 \
+    /home/user/qemu-nyx/out-cov/qemu-system-x86_64 -cdrom hypertrash.iso -enable-kvm -net none -nographic -machine pc \
     -drive id=disk0,file=null-co://,file.read-zeroes=on,if=none,format=raw -device floppy,unit=0,drive=disk0 \
     2> /tmp/data.log
