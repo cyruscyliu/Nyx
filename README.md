@@ -22,13 +22,13 @@
 - [Done] Build GRUB (HDD) (05-deploy.sh)
 - [Done] Build Nyx-Fuzzer (HDD) (06-deploy.sh)
 - Following steps:
-    - [Done] 1: clone qemu-nyx to Targets/qemu/VM and compress it to qemu-nyx.tar.gz
-    - [Done] 2: prepare a VM image (prepare.sh and copy_install_files.sh), then cp it (HDD) (07-deploy.sh)
-    - [Done] 3: take a snapshot, then cp it (create_pre_snapshot.sh) (HDD) (08-deploy.sh)
-    - [Done] 4: generate all config files: `python3 gen_config.py` (HDD) (09-deploy.sh)
-    - [Done] 5: generate all spec files: `bash -x gen_all.sh` (HDD) (09-deploy.sh)
-    - [Done] 6: copy all launching commands: `bash -x gen_all.sh` (HDD) (09-deploy.sh)
-    - [Done] 7: save the testcases with timestamp and launch the fuzzer
+    - [Done] 1: clone qemu-nyx to Targets/qemu/VM and compress it to qemu-nyx.tar.gz (SSD)
+    - [Done] 2: prepare a VM image (prepare.sh and copy_install_files.sh), then cp it (SSD) (07-deploy.sh)
+    - [Done] 3: take a snapshot, then cp it (create_pre_snapshot.sh) (SSD) (08-deploy.sh)
+    - [Done] 4: generate all config files: `python3 gen_config.py` (SSD) (09-deploy.sh)
+    - [Done] 5: generate all spec files: `bash -x gen_all.sh` (SSD) (09-deploy.sh)
+    - [Done] 6: copy all launching commands: `bash -x gen_all.sh` (SSD) (09-deploy.sh)
+    - [Done] 7: save the testcases with timestamp and launch the fuzzer (HDD)
     - [Done] 8: dump coverage, merge and generate reports ()
 
 ---
