@@ -1,6 +1,6 @@
 import os
 import sys
-sys.path.insert(1, os.path.join(os.path.dirname(os.path.realpath(__file__)), '../nyx_fuzzer/structured_fuzzer/interpreter/'))
+sys.path.insert(1, os.path.join(os.path.dirname(os.path.realpath(__file__)), '../structured_fuzzer/interpreter/'))
 
 from spec_lib.graph_spec import *
 from spec_lib.data_spec import *
