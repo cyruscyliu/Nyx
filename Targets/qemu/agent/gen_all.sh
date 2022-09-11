@@ -3,7 +3,7 @@
 ./build_sharedir_standalone.sh legacy_ac97
 ./build_sharedir_standalone.sh legacy_cs4231a
 ./build_sharedir_standalone.sh legacy_es1370
-./build_sharedir_standalone.sh legacy_intel_hda
+./build_sharedir_standalone.sh legacy_intelhda
 ./build_sharedir_standalone.sh legacy_sb16
 ./build_sharedir_standalone.sh legacy_parallel
 ./build_sharedir_standalone.sh legacy_serial

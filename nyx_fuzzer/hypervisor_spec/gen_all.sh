@@ -3,7 +3,7 @@
 ./make_standalone.sh qemu legacy_ac97
 ./make_standalone.sh qemu legacy_cs4231a
 ./make_standalone.sh qemu legacy_es1370
-./make_standalone.sh qemu legacy_intel_hda
+./make_standalone.sh qemu legacy_intelhda
 ./make_standalone.sh qemu legacy_sb16
 ./make_standalone.sh qemu legacy_parallel
 ./make_standalone.sh qemu legacy_serial

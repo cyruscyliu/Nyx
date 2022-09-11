@@ -334,7 +334,7 @@ def make_legacy_cs4231a(s):
 LD_BIND_NOW=1 LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libasan.so.4:./hypertrash_crash_detector_asan ASAN_OPTIONS=log_path=/tmp/data.log:abort_on_error=true:detect_leaks=false 
 /home/user/qemu-5.0.0-rc3/x86_64-softmmu/qemu-system-x86_64 -cdrom hypertrash.iso -enable-kvm -m 100 -net none -nographic -device intel-hda -device hda-duplex
 """
-def make_legacy_intel_hda(s):
+def make_legacy_intelhda(s):
   make_globals(s)
   make_hypercube_generic(s)
   make_hypercube(s, 0x0, 0x100, 2, mmio=True)
@@ -348,7 +348,7 @@ def make_legacy_ac97(s):
   make_globals(s)
   make_hypercube_generic(s)
   make_hypercube(s, 0x0, 0x400, 2, mmio=True)
-  make_hypercube(s, 0xc000, 0x100, 1, mmio=False)
+  make_hypercube(s, 0xc000, 0x400, 1, mmio=False)
   make_hypercube(s, 0xc400, 0x100, 0, mmio=False)
 
 """

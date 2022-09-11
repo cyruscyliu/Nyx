@@ -4,7 +4,7 @@ bash ./11-cov.sh /media/hdd0/qiliu/workdir_qemu-legacy_e1000-
 bash ./11-cov.sh /media/hdd0/qiliu/workdir_qemu-legacy_ee100pro-
 bash ./11-cov.sh /media/hdd0/qiliu/workdir_qemu-legacy_es1370-
 bash ./11-cov.sh /media/hdd0/qiliu/workdir_qemu-legacy_floppy-
-bash ./11-cov.sh /media/hdd0/qiliu/workdir_qemu-legacy_intel_hda-
+bash ./11-cov.sh /media/hdd0/qiliu/workdir_qemu-legacy_intelhda-
 bash ./11-cov.sh /media/hdd0/qiliu/workdir_qemu-legacy_ne2000-
 bash ./11-cov.sh /media/hdd0/qiliu/workdir_qemu-legacy_pcnet-
 bash ./11-cov.sh /media/hdd0/qiliu/workdir_qemu-legacy_rtl8139-

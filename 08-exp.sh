@@ -2,7 +2,7 @@ bash -x 08-deploy.sh qemu_xhci
 bash -x 08-deploy.sh legacy_ac97
 bash -x 08-deploy.sh legacy_cs4231a
 bash -x 08-deploy.sh legacy_es1370
-bash -x 08-deploy.sh legacy_intel_hda
+bash -x 08-deploy.sh legacy_intelhda
 bash -x 08-deploy.sh legacy_sb16
 bash -x 08-deploy.sh legacy_floppy
 bash -x 08-deploy.sh legacy_sdhci

@@ -1,7 +1,7 @@
 #!/bin/bash
 target=$1
 
-# usage: bash -x ./11-cov.sh /qiliu/workdir_qemu-legacy_intel_hda-
+# usage: bash -x ./11-cov.sh /qiliu/workdir_qemu-legacy_intelhda-
 
 # choose a target, generate iso, test it, and collect coverage
 parallel_script=/tmp/$(basename ${target}).sh

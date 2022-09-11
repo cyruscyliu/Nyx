@@ -2,7 +2,7 @@ cp -r pre_snapshot pre_snapshot-qemu_xhci-0
 cp -r pre_snapshot pre_snapshot-legacy_ac97-0
 cp -r pre_snapshot pre_snapshot-legacy_cs4231a-0
 cp -r pre_snapshot pre_snapshot-legacy_es1370-0
-cp -r pre_snapshot pre_snapshot-legacy_intel_hda-0
+cp -r pre_snapshot pre_snapshot-legacy_intelhda-0
 cp -r pre_snapshot pre_snapshot-legacy_sb16-0
 cp -r pre_snapshot pre_snapshot-legacy_parallel-0
 cp -r pre_snapshot pre_snapshot-legacy_serial-0
