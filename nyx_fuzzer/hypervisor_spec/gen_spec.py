@@ -10,7 +10,7 @@ from spec_lib.generators import opts,flags,limits
 
 import jinja2
 
-from hexa_spec.legacy import make_legacy_pcnet, make_legacy_rtl8139, make_legacy_e1000, make_legacy_ee100pro, make_legacy_sdhci, make_legacy_intelhda, make_legacy_ac97, make_legacy_ide_core, make_legacy_floppy, make_legacy_parallel, make_legacy_serial, make_legacy_cs4231a, make_legacy_soundblaster, make_legacy_ne2000, make_legacy_xhci
+from hexa_spec.legacy import make_legacy_pcnet, make_legacy_rtl8139, make_legacy_e1000, make_legacy_ee100pro, make_legacy_sdhci, make_legacy_intelhda, make_legacy_ac97, make_legacy_ide_core, make_legacy_floppy, make_legacy_parallel, make_legacy_serial, make_legacy_cs4231a, make_legacy_soundblaster, make_legacy_ne2000, make_legacy_xhci, make_legacy_es1370
 
 from hexa_spec.ahci import make_ahci
 
@@ -65,6 +65,8 @@ if len(sys.argv) == 2:
         make_legacy_soundblaster(s)
     elif target == "legacy_ne2000":
         make_legacy_ne2000(s)
+    elif target == "legacy_es1370":
+        make_legacy_es1370(s)
     else:
         sys.exit(0)
 

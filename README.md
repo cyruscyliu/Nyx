@@ -24,7 +24,7 @@
     - [Done] 5: generate all spec files: `bash -x gen_all.sh` (SSD) (09-deploy.sh)
     - [Done] 6: copy all launching commands: `bash -x gen_all.sh` (SSD) (09-deploy.sh)
     - [Done] 7: save the testcases with timestamp and launch the fuzzer (HDD)
-    - [Done] 8: dump coverage, merge and generate reports ()
+    - [Done] 8: compile QEMU, dump coverage, merge and generate reports (SSD)
 
 ---
 
