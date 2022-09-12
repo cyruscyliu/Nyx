@@ -12,9 +12,9 @@ import sys
 def main(argv):
     filepath = argv[1]
     basename = os.path.basename(filepath)
-    _, _, timestamp = basename.strip('.bin').split('_')
+    _, cnt, timestamp = basename.strip('.bin').split('_')
     _, target, round_ = filepath.split('/')[-4].split('-')
-    print(target, round_, timestamp)
+    print(target, round_, cnt, timestamp)
 
 if __name__ == '__main__':
     main(sys.argv)

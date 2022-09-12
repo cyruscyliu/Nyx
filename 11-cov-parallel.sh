@@ -3,10 +3,14 @@ QEMU=$PWD/Targets/qemu/VM/qemu-nyx/out-cov/qemu-system-x86_64
 
 bin=$1
 # bin=/qiliu/workdir_qemu-legacy_ne2000-1/corpus/timeout/cnt_617_1640728834.bin  # with target round timestamp
-read target round timestamp < <(python3 11-cov.py $bin)
+read target round cnt timestamp < <(python3 11-cov.py $bin)
 
 # generate ISO
 nyx_fuzzer=/tmp/nyx_fuzzer-${target}-${round}-${timestamp}
+if [ -d ${nyx_fuzzer} ]; then
+    echo "[-] Duplicated: let's skip this"
+    exit 1
+fi
 mkdir -p ${nyx_fuzzer}
 hypervisor_spec=${nyx_fuzzer}/hypervisor_spec
 cp -r nyx_fuzzer/hypervisor_spec/ ${nyx_fuzzer}
