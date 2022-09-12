@@ -1,20 +1,15 @@
 # Nyx: Greybox Hypervisor Fuzzing using Fast Snapshots and Affine Types
 
 ## Change Log
-- [Done] Update QEMU version to QEMU 5.1.0
-- [Done] Update workdir for each instance
-- [Done] Generate spec for each instance (nyx_fuzzer/hypertrash_spec/)
-- [Done] Construct run.sh for each target (Targets/qemu/agent)
-- [Done] Update gen_config.py
-```
-    runner: QemuSnapshot((
-        qemu_binary: "/home/qiliu/Nyx/QEMU-PT/qemu/x86_64-softmmu/qemu-system-x86_64",
-        hda: "/home/qiliu/Nyx-images/qemu.qcow2-legacy_xhci-0",
-        sharedir: "/home/qiliu/Nyx/Targets/qemu/sharedir_asan-legacy_xhci-0/",
-        presnapshot: "/home/qiliu/Nyx/Targets/qemu/VM/pre_snapshot-legacy_xhci-0/",
-        spec_path: "/home/qiliu/Nyx/Targets/qemu/sharedir_asan-legacy_xhci-0/spec.msgp-legacy_xhci",
-        workdir_path: "/media/hdd0/qiliu/workdir_qemu-legacy_xhci-0/",
-```
+
+- [Done] Develop scripts to deploy Nyx on a new machine
+- [Done] Develop scripts to generate all configurations
+- [Done] Update Nyx to dump seeds with timestamps
+- [Done] Patch QEMU to handle timeout seeds (10s)
+- [Done] Develop scripts to generate coverage
+- [Done] Fix bugs in MMIO/PIO space size
+- [Done] Sync QEMU launching command lines
+
 ## Work Flow Overview
 - [Done] Install dependencies (01-deploy.sh)
 - [Done] KVM-PT (02-deploy.sh, 03-deploy.sh)
