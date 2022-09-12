@@ -8,7 +8,7 @@ if [[ ! -f ../Nyx-images/qemu.qcow2 ]]; then
 fi
 
 cd ../Nyx-images
-for idx in {0..0}; do
+for idx in {0..9}; do
     mkdir ${target}-${idx}
     cp qemu.qcow2 ${target}-${idx}/
 done
