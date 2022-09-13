@@ -15,7 +15,7 @@ sorted(src_files)
 
 cmd = 'llvm-profdata merge -output={} {}'
 
-for index, src_file in enumerate(src_files_matrix[i]):
+for index, src_file in enumerate(src_files):
     if index == 0:
         previous = ''
     else:
