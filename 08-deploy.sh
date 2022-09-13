@@ -8,7 +8,7 @@ if [[ ! -d ../Nyx-images/pre_snapshot ]]; then
 fi
 
 cd ../Nyx-images
-for idx in {0..1}; do
+for idx in {0..9}; do
     rm -rf pre_snapshot-${target}-${idx}
     cp -r pre_snapshot pre_snapshot-${target}-${idx}
 done
