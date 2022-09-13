@@ -8,7 +8,7 @@ idx = sys.argv[3]
 # profile-nyx-qemu-legacy_ac97-none-0-1662964432
 
 src_files = []
-for src_file in src_files:
+for src_file in os.listdir(src_dir):
     if '-none-{}-'.format(idx) in src_file:
         src_files.append(os.path.join(src_dir, src_file))
 sorted(src_files)
