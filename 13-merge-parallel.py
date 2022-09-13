@@ -10,7 +10,7 @@ idx = sys.argv[3]
 src_files = []
 for src_file in src_files:
     if '-none-{}-'.format(idx) in src_file:
-        src_files.append( s.path.join(src_dir, src_file))
+        src_files.append(os.path.join(src_dir, src_file))
 sorted(src_files)
 
 cmd = 'llvm-profdata merge -output={} {}'
