@@ -11,7 +11,7 @@ src_files = []
 for src_file in os.listdir(src_dir):
     if '-none-{}-'.format(idx) in src_file:
         src_files.append(os.path.join(src_dir, src_file))
-sorted(src_files)
+src_files = sorted(src_files)
 
 cmd = 'llvm-profdata merge -output={} {}'
 
