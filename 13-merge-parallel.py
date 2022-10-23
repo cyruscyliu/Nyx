@@ -9,7 +9,7 @@ idx = sys.argv[3]
 
 src_files = []
 for src_file in os.listdir(src_dir):
-    if '-none-{}-'.format(idx) in src_file:
+    if src_file.startswith('profile') and '-none-{}-'.format(idx) in src_file:
         src_files.append(os.path.join(src_dir, src_file))
 src_files = sorted(src_files)
 

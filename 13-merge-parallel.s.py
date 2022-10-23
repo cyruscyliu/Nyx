@@ -9,7 +9,7 @@ idx = sys.argv[3]
 
 src_files = []
 for src_file in os.listdir(src_dir):
-    if 'sprofile' in src_file and '-none-{}-'.format(idx) in src_file:
+    if src_file.startswith('sprofile') and '-none-{}-'.format(idx) in src_file:
         src_files.append(os.path.join(src_dir, src_file))
 src_files = sorted(src_files)
 
@@ -20,6 +20,6 @@ for index, src_file in enumerate(src_files):
         previous = ''
     else:
         previous = os.path.join(dst_dir, os.path.basename(src_files[index - 1]))
-        dst_file = os.path.join(dst_dir, os.path.basename(src_file))
-        print(cmd.format(dst_file, previous))
+    dst_file = os.path.join(dst_dir, os.path.basename(src_file))
+    print(cmd.format(dst_file, ' '.join([previous, src_file])))
 
